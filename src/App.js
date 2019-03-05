@@ -11,15 +11,35 @@ class App extends React.Component {
     super()
     this.state = {
       todos: todosData,
-      value: ''
+      todo: ''
     }
   }
+
+  inputChangeHandler = event => {
+    this.setState({todo: event.target.value})
+  }
+
+  formSubmitHandler = (e) => {
+    e.preventDefault()
+    console.log('button clicked')
+    console.log(this.state.todo)
+    let newTodo = {
+      task: this.state.todo,
+      completed: false,
+      id: Date.now
+
+    }
+    this.setState(prevState => {
+      return { todos: [...todosData, newTodo ]}
+    })
+  }
+
   render() {
     const todoItems = this.state.todos.map(item => <TodoList item = {item} key={item.id} />)
     return (
       <div>
         {todoItems}
-        <TodoForm inputValue = {this.state.value} />
+        <TodoForm inputValue = {this.state.value}  addTodo = {this.formSubmitHandler} textHandler = {this.inputChangeHandler}/>
       </div>
     );
   }
