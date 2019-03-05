@@ -1,6 +1,7 @@
 import React from 'react';
 import todosData from './todosData'
 import TodoList from './components/TodoComponents/TodoList'
+import TodoForm from './components/TodoComponents/TodoForm'
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -10,6 +11,7 @@ class App extends React.Component {
     super()
     this.state = {
       todos: todosData,
+      value: ''
     }
   }
   render() {
@@ -17,6 +19,7 @@ class App extends React.Component {
     return (
       <div>
         {todoItems}
+        <TodoForm inputValue = {this.state.value} />
       </div>
     );
   }
