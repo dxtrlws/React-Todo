@@ -33,15 +33,15 @@ class App extends React.Component {
 
   formSubmitHandler = e => {
     e.preventDefault();
-    
+    console.log(this.state);
     let newTodo = {
       task: this.state.todo,
       completed: false,
-      id: Date.now
+      id: Date.now()
     };
     this.setState(prevState => {
       return {
-        todos: [...todosData, newTodo],
+        todos: [...prevState.todos, newTodo],
         todo: ""
       };
     });
@@ -57,7 +57,7 @@ class App extends React.Component {
     ));
 
     return (
-      <div>
+      <div >
         {todoItems}
         <TodoForm
           inputValue={this.state.todo}
