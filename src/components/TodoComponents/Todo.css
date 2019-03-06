@@ -1,0 +1,14 @@
+.task-complete {
+    text-decoration: line-through;
+    cursor: pointer;
+}
+
+.task-open {
+    display: block;
+    cursor: pointer;
+}
+
+.completed {
+    margin-left: 20px;
+}
+
