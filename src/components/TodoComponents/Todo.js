@@ -1,11 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import "./Todo.css";
 
 function Todo(props) {
-    
-    return (
-        <p>{props.item}</p>
-    )
+  return (
+    <p
+      onClick={() => props.taskComplete(props.id)}
+      className={props.task ? "task-complete" : "task-open"}
+    >
+      {props.item}
+    </p>
+  );
 }
 
-export default Todo
+export default Todo;
