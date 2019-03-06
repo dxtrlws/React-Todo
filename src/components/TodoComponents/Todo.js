@@ -2,13 +2,20 @@ import React from "react";
 import "./Todo.css";
 
 function Todo(props) {
+    
   return (
-    <p
-      onClick={() => props.taskComplete(props.id)}
-      className={props.task ? "task-complete" : "task-open"}
+      <div className="card">
+      <div className="card-content">
+      <input type="checkbox" checked={props.todo.completed ? "checked" : ""} onChange={() => props.taskComplete(props.todo.id)}/>
+    <span
+      onClick={() => props.taskComplete(props.todo.id)}
+      className={props.todo.completed ? "task-complete" : "task-open"}
     >
-      {props.item}
-    </p>
+      {props.todo.task}
+      
+    </span>
+    </div>
+    </div>
   );
 }
 

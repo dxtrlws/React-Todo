@@ -33,7 +33,6 @@ class App extends React.Component {
 
   formSubmitHandler = e => {
     e.preventDefault();
-    console.log(this.state);
     let newTodo = {
       task: this.state.todo,
       completed: false,
@@ -47,22 +46,26 @@ class App extends React.Component {
     });
   };
 
-  render() {
-    const todoItems = this.state.todos.map(item => (
-      <TodoList
-        item={item}
-        key={item.id}
-        taskComplete={this.taskCompleteHandler}
-      />
-    ));
+  filterHandler = () => {
+    let completedTodos = this.state.todos.filter(todo => !todo.completed );
+    console.log(this.state)
+    
+      this.setState({todos: completedTodos})
+    
+    
+  };
 
+  render() {
     return (
-      <div >
-        {todoItems}
+      <div className="container">
+      <h1>React Todo's</h1>
+        <TodoList items = {this.state.todos} taskComplete={this.taskCompleteHandler} />
         <TodoForm
           inputValue={this.state.todo}
           addTodo={this.formSubmitHandler}
           textHandler={this.inputChangeHandler}
+          filterHandler={this.filterHandler}
+          completed={this.state.todos}
         />
       </div>
     );

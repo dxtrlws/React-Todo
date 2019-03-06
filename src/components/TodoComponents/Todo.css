@@ -7,3 +7,8 @@
     display: block;
     cursor: pointer;
 }
+
+.completed {
+    margin-left: 20px;
+}
+
